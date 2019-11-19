@@ -29,7 +29,7 @@ class tl_calendar_events_tags extends tl_calendar_events
 		$this->Database->prepare("DELETE FROM tl_tag WHERE from_table = ? AND tid = ?")
 			->execute($dc->table, $dc->id);
 	}
-	
+
 	public function onCopy($dc)
 	{
 		if (is_array($this->Session->get('tl_calendar_events_copy')))
@@ -65,8 +65,6 @@ if (!in_array('tl_calendar_events', $disabledObjects))
 	$GLOBALS['TL_DCA']['tl_calendar_events']['config']['ondelete_callback'][] = array('tl_calendar_events_tags', 'deleteEvents');
 	$GLOBALS['TL_DCA']['tl_calendar_events']['config']['onload_callback'][] = array('tl_calendar_events_tags', 'onCopy');
 	$GLOBALS['TL_DCA']['tl_calendar_events']['palettes']['default'] = str_replace("author", "author,tags", $GLOBALS['TL_DCA']['tl_calendar_events']['palettes']['default']);
-	$GLOBALS['TL_DCA']['tl_calendar_events']['palettes']['internal'] = str_replace("author", "author,tags", $GLOBALS['TL_DCA']['tl_calendar_events']['palettes']['internal']);
-	$GLOBALS['TL_DCA']['tl_calendar_events']['palettes']['external'] = str_replace("author", "author,tags", $GLOBALS['TL_DCA']['tl_calendar_events']['palettes']['external']);
 }
 $GLOBALS['TL_DCA']['tl_calendar_events']['fields']['tags'] = array
 (
